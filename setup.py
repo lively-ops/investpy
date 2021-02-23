@@ -19,15 +19,15 @@ def requirements(filename):
 
 
 setup(
-    name='investpy',
-    version='1.0.2',
+    name='investpyx',
+    version='0.1.1',
     packages=find_packages(),
     url='https://investpy.readthedocs.io/',
     download_url='https://github.com/alvarobartt/investpy/archive/1.0.2.tar.gz',
     license='MIT License',
-    author='Alvaro Bartolome',
-    author_email='alvarobdc@yahoo.com',
-    description='Financial Data Extraction from Investing.com with Python',
+    author='Original Author: Alvaro Bartolome, Author of Extended Feature: Komal Paudyal',
+    author_email='alvarobdc@yahoo.com, komal.paudyal@icloud.com',
+    description='This is a fork of investpy library, and is intended for testing purpose only. All descriptions are hence of original investpy library.',
     long_description=readme(),
     long_description_content_type='text/markdown',
     install_requires=requirements(filename='requirements.txt'),

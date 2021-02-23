@@ -1,19 +1,23 @@
 # Copyright 2018-2021 Alvaro Bartolome, alvarobartt @ GitHub
 # See LICENSE for details.
 
+
 import pandas as pd
 
 import pkg_resources
 from unidecode import unidecode
+import certifi
 
 import requests
 from lxml.html import fromstring
 
 from .utils import constant as cst
-from .utils.extra import random_user_agent, resource_to_data
+from .utils.extra import random_user_agent, resource_to_data, get_proxy
 
 
-def technical_indicators(name, country, product_type, interval='daily'):
+
+
+def technical_indicators(api_key, name, country, product_type, interval='daily'):
     """
     This function retrieves the technical indicators values calculated by Investing.com for every financial product
     available (stocks, funds, etfs, indices, currency crosses, bonds, certificates and commodities) for different 
@@ -139,9 +143,11 @@ def technical_indicators(name, country, product_type, interval='daily'):
         "Connection": "keep-alive",
     }
 
+    pxy = get_proxy(api_key)
+
     url = "https://www.investing.com/instruments/Service/GetTechincalData"
 
-    req = requests.post(url, headers=headers, data=data_values)
+    req = requests.post(url, headers=headers, data=data_values, proxies=pxy, verify=False)
 
     if req.status_code != 200:
         raise ConnectionError("ERR#0015: error " + str(req.status_code) + ", try again later.")
@@ -167,7 +173,7 @@ def technical_indicators(name, country, product_type, interval='daily'):
     return pd.DataFrame(tech_indicators)
 
 
-def moving_averages(name, country, product_type, interval='daily'):
+def moving_averages(api_key, name, country, product_type, interval='daily'):
     """
     This function retrieves the moving averages values calculated by Investing.com for every financial product
     available (stocks, funds, etfs, indices, currency crosses, bonds, certificates and commodities) for different 
@@ -218,6 +224,7 @@ def moving_averages(name, country, product_type, interval='daily'):
         5    200      4.822       sell      4.867       sell
 
     """
+    
 
     if not name:
         raise ValueError("ERR#0116: the parameter name must be specified and must be a string.")
@@ -289,9 +296,12 @@ def moving_averages(name, country, product_type, interval='daily'):
         "Connection": "keep-alive",
     }
 
-    url = "https://www.investing.com/instruments/Service/GetTechincalData"
+    pxy = get_proxy(api_key)
 
-    req = requests.post(url, headers=headers, data=data_values)
+    url = "https://www.investing.com/instruments/Service/GetTechincalData"
+    
+
+    req = requests.post(url, headers=headers, data=data_values, proxies=pxy, verify=False)
 
     if req.status_code != 200:
         raise ConnectionError("ERR#0015: error " + str(req.status_code) + ", try again later.")
@@ -323,7 +333,7 @@ def moving_averages(name, country, product_type, interval='daily'):
     return pd.DataFrame(moving_avgs)
 
 
-def pivot_points(name, country, product_type, interval='daily'):
+def pivot_points(api_key, name, country, product_type, interval='daily'):
     """
     This function retrieves the pivot points values calculated by Investing.com for every financial product
     available (stocks, funds, etfs, indices, currency crosses, bonds, certificates and commodities) for different 
@@ -372,6 +382,7 @@ def pivot_points(name, country, product_type, interval='daily'):
         4   DeMark's    NaN    NaN  4.639         4.665  4.721    NaN    NaN
 
     """
+    
 
     if not name:
         raise ValueError("ERR#0116: the parameter name must be specified and must be a string.")
@@ -443,9 +454,11 @@ def pivot_points(name, country, product_type, interval='daily'):
         "Connection": "keep-alive",
     }
 
+    pxy = get_proxy(api_key)
+
     url = "https://www.investing.com/instruments/Service/GetTechincalData"
 
-    req = requests.post(url, headers=headers, data=data_values)
+    req = requests.post(url, headers=headers, data=data_values, proxies=pxy, verify=False)
 
     if req.status_code != 200:
         raise ConnectionError("ERR#0015: error " + str(req.status_code) + ", try again later.")
