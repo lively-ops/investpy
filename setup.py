@@ -20,14 +20,14 @@ def requirements(filename):
 
 setup(
     name='investpyx',
-    version='0.1.4',
+    version='0.1.5',
     packages=find_packages(),
     url='https://investpy.readthedocs.io/',
     download_url='https://github.com/alvarobartt/investpy/archive/1.0.3.tar.gz',
     license='MIT License',
     author='Original Author: Alvaro Bartolome, Author of Extended Feature: Komal Paudyal',
     author_email='alvarobdc@yahoo.com, komal.paudyal@icloud.com',
-    description='This is a fork of investpy library, and is intended for testing purpose only. All descriptions are hence of original investpy library.',
+    description='This is a fork of investpy library, and is intended for testing purpose only. All descriptions are hence of original investpy library. Please support the original Author for the contribution he made by developing the investpy library.',
     long_description=readme(),
     long_description_content_type='text/markdown',
     install_requires=requirements(filename='requirements.txt'),

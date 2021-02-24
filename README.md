@@ -51,6 +51,26 @@ some basic functionality will be sorted out with sample Python code blocks. Addi
 can be found under [examples/](https://github.com/alvarobartt/investpy/tree/master/examples) directory, which 
 contains a collection of Jupyter Notebooks on how to use investpy and handle its data.
 
+**Extended Feature: Rotating Proxy with Zyte (Crawlera)**
+
+### Using Zyte to remove request limitation
+
+You can pass your Zyte (Previously Crawlera) API to automatically setup proxy rotation. 
+
+```python
+import investpy
+key = 'YOUR_API_KEY'
+df = investpy.technical.moving_averages(api_key=key,
+                                        name='EUR/USD',
+                                        country='none',
+                                        product_type='currency_cross',
+                                        interval='1min')
+
+print(df.head())
+```
+**Note: This package is for testing purpose only, the proxy is only implemented on technical indicators at the moment**
+
+
 ### Recent/Historical Data Retrieval
 
 investpy allows the user to **download both recent and historical data from any financial product indexed** 
