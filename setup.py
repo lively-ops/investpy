@@ -20,7 +20,7 @@ def requirements(filename):
 
 setup(
     name='investpyx',
-    version='0.1.1',
+    version='0.1.4',
     packages=find_packages(),
     url='https://investpy.readthedocs.io/',
     download_url='https://github.com/alvarobartt/investpy/archive/1.0.3.tar.gz',

@@ -65,10 +65,8 @@ def get_proxy(api_key):
     This function passes the Zyte API key and retrieves a proxy that can be used to fetch data
     without IP BAN or limitation. This requires an active subscription with Zyte. 
     """
-    proxy_host = "proxy.crawlera.com"
-    proxy_port = "8010"
-    proxy_auth = f"{api_key}:"
-    proxies = {"https": "https://{}@{}:{}/".format(proxy_auth, proxy_host, proxy_port),
-      "http": "http://{}@{}:{}/".format(proxy_auth, proxy_host, proxy_port)}
+    proxies={
+        "http": f"http://{api_key}:@proxy.crawlera.com:8011/",
+    }
     
     return proxies
