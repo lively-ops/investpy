@@ -60,6 +60,7 @@ setup(
     project_urls={
         'Bug Reports': 'https://github.com/alvarobartt/investpy/issues',
         'Source': 'https://github.com/alvarobartt/investpy',
+        'Forked (Extended Feature)': 'https://github.com/lively-ops/investpy',
         'Documentation': 'https://investpy.readthedocs.io/'
     },
 )
